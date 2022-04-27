@@ -16,6 +16,8 @@ echo "Type the name of a file"
 
 read FN
 
+touch ${FN}
+
 git add .
 
 sleep 1
@@ -28,4 +30,4 @@ git commit -m "${commit}"
 
 sleep 1
 
-git push --set-upstream origin ${branch}
+#git push --set-upstream origin ${branch}
