@@ -26,7 +26,6 @@ jobs:
     env:
       VAR1 : "This is Variable1"
       VAR2 : "This is Valiable2"
-      LOCAL_VAR: "This is a local variable"
       
     steps:
       - name: Print Hello World Message in Deploy
@@ -39,6 +38,8 @@ jobs:
           echo "Var1 = ${{ env.VAR1 }}" 
           echo "Var2 = ${{ env.VAR2 }}"
           echo "Var3 = $LOCAL_VAR
+        env:
+          LOCAL_VAR: "This is a local Variable"
           
       - name: Printing Deploy package
         run :
