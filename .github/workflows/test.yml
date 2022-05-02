@@ -27,11 +27,6 @@ jobs:
       VAR2 : "This is Valiable2"
       
     steps:
-      - name: Print Hello World Message in Deploy
-        run: |
-          echo "Hello Deploy World" 
-          ls -al
-      
       - name: Print Environment Variables
         run: |
           echo "Var1 = ${{ env.VAR1 }}" 
@@ -43,7 +38,4 @@ jobs:
 
       - name: Lets test some packs if they are here (AWS) 
         run : aws --version
-        
-      - name: Lets test some packs if they are here (zip) 
-        run : zip --version
-              
+
