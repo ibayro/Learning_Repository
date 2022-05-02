@@ -1,0 +1,52 @@
+# This is my test GitHub action, part of a learning prcess
+
+name: My_GitHub_Workflow_Action
+env:
+  APPLICATION_NAME    : "Test"
+  DEPLOY_PACKAGE_NAME : "Test_deploy_version-${{ github.sha }}"
+  
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  my_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Print Hello World Message in Test
+        run: echo "Application name is ${{ env.APPLICATION_NAME }}"
+  my_deploy:
+    runs-on: ubuntu-latest
+    needs: [my_test]
+    env:
+      VAR1 : "This is Variable1"
+      VAR2 : "This is Valiable2"
+      LOCAL_VAR: "This is a local variable"
+      
+    steps:
+      - name: Print Hello World Message in Deploy
+        run: |
+          echo "Hello Deploy World" 
+          ls -al
+      
+      - name: Print Environment Variables
+        run: |
+          echo "Var1 = ${{ env.VAR1 }}" 
+          echo "Var2 = ${{ env.VAR2 }}"
+          echo "Var3 = $LOCAL_VAR
+          
+      - name: Printing Deploy package
+        run :
+              echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
+
+      - name: Lets test some packs if they are here (AWS) 
+        run : aws --version
+        
+      - name: Lets test some packs if they are here (zip) 
+        run : zip --version
+              
