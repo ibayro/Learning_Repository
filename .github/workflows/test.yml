@@ -23,8 +23,11 @@ jobs:
         run: echo "Application name is ${{ env.APPLICATION_NAME }}"
   
   my_deploy:
-    runs-on: ubuntu-latest
-    needs: [my_test]
+    runs-on: ${{matrix.os}}
+    strategy: 
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        needs: [my_test]
     env:
       VAR1 : "This is Variable1"
       VAR2 : "This is Valiable2"
