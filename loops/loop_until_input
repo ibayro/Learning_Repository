@@ -1,9 +1,0 @@
-#!/bin/bash
-
-EXIT_PLEASE=0
-until [ $EXIT_PLEASE != 0 ]
-do
-	echo "Press CTRL+C to stop this loop"
-	sleep 1
-done
-exit 0
