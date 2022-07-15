@@ -1,0 +1,31 @@
+
+dmidecode gathers system information (cpu, server, memory, networking)
+
+#----------SYSTEM INFO---------
+cat /etc/*-release			#linux destribution info
+uname - a				#kernel info
+sudo dmidecode -s system-manufacturer
+sudo dmidecode -s system-product-name
+sudo dmidecode -s system-serial-number
+
+#---------CPU INFO-------------
+cat /proc/cpuinfo
+
+#----------networking----------
+sudo apt install net-tools		#installs networking tools
+sudo apt-get install isc-dhcp-server	#installs DHCP server
+sudo apt-get install bind9 dnsutils	#installs DNS server
+
+/etc/network/interfaces			#networking config file
+/etc/sysctl.conf			#ip forwarding config file
+/etc/dhcp/dhcpd.conf			#DHCP config file path
+/etc/default/isc-dhcp-server		#DHCP IP allocation config file
+/etc/bind/named.conf.options		#DNS config file
+				
+ifconfig				#network configurations
+iptables -L				#current iptables rules list
+
+#----------MEMORY INFO----------
+sudo dmidecode -t17 |awk '/Handle / {print $2}' |wc -l	#total number of slots
+sudo dmidecode -t17 |awk '/Size:/' |awk '!/No/'|wc -l	#total populated slots
+sudo dmidecode -t17 |awk '/Size:/' |awk '/No/'|wc -l	#total unpopulated slots

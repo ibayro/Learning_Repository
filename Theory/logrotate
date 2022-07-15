@@ -1,0 +1,24 @@
+
+logrotate - easy administation of systems, generate large number of log files.
+logrotate allows automatic rotation, removal, compression and mailing of log files.
+Using logrotate we can store logs longer with a less disk space, we can handle logs daily, weekly, monthly etc
+
+/etc/logrotate.conf - logrotate config file
+
+#--------------ADDING CONFIGURATION----------------
+sudo nano /etc/logrotate.d/example-app
+
+/var/log/example-app/*.log {
+daily
+missingok
+rotate 14
+compress
+notifempty
+create 0640 www-data www-data	#after rotation, this will create a new empty log file and specify permissions 
+sharedscripts			#config script runs only once per run
+postrotate			
+systemctl reload example-app
+endscript
+}
+
+sudo logrotate /etc/logrotate.conf --debug	#customize config file based upon our needs

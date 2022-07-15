@@ -1,0 +1,4 @@
+
+#evtest - command-line tool use to monitor input device events
+
+sudo evtest /dev/input/event3

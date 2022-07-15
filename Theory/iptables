@@ -1,0 +1,17 @@
+
+iptables - standard firewall software, use set of rules to filter the network traffic
+
+iptables can be configured via rules applied on chains:
+Input chain - handles incomming traffic
+Output chain - handles outgoing traffic
+Forward chain - handles routing traffic
+
+#----------------COMMON IPTABLES RULES-------------
+sudo iptables -L	#list current iptables rules
+sudo iptables -A INPUT -p tcp --dport 4321 -j ACCEPT	#allows incomming tcp traffic from port 4321
+sudo iptables -A INPUT -j DROP				#blocks all incomming traffic
+sudo iptables-save
+sudo iptables-save > iptables-save
+sudo iptables-save > iptables-restore
+
+#man iptables - full iptables manual

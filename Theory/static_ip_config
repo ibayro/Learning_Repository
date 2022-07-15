@@ -1,0 +1,18 @@
+
+#Access network config file using /etc/network/interfaces
+
+#WAN static config
+
+auto #WAN_interface_name
+iface #WAN_ interface_name inet static
+	address #your_ip
+	netmask #your_netmask
+	gateway #your_gateway
+	dns-nameservers #preferable_dns
+
+#LAN static config
+
+auto #LAN_interface_name
+iface #LAN_interface_name inet static
+address #preferable_IP
+netmask #preferable_netmask

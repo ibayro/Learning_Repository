@@ -1,0 +1,27 @@
+
+cURL used for transferring data from/to a server, offers many functions such as:
+- http post
+- ftp post
+- user authentication
+- file transfer
+- proxy support
+- cookies
+- SSL connections 
+
+#---------HTTP GET METHOD---------
+used to request data from a specified resource
+
+#HTTP GET command example (json)
+curl -H "Content-Type:application/json" -H "Accept:application/json" -X GET http://google.com
+#-H specifies a Header
+#-X specifies the request
+
+#--------HTTP POST METHOD----------
+used to send data to server, create/update resource
+
+#HTTP POST example
+curl --data "name=value1&name2=value2" https://www.packtpub.com
+#--data - POST request
+
+#uploading a file
+curl -T "{a}" https://packtpub.com

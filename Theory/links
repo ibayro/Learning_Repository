@@ -1,0 +1,16 @@
+
+#	HARD LINKS	
+#	Only link to files
+#	Link to contents on the same disk
+#	Reference inode/physical locations
+#	Moving file will still allow the link to work
+#	ln orig_file link_name
+
+
+#	SOFT LINKS
+#	Can link to dirs and files
+#	Can reference files/folders across disks or networks
+#	If the original file is deleted, the hard link will remain
+#	Links don`t follow the reference file if moved
+#	ln -s orig_file link_name
+#	ls -la shows the links 

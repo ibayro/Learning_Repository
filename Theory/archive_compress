@@ -1,0 +1,26 @@
+
+#Archive - collection of files and directories stored in a single uncompressed file.
+#---------------archiving commands----------------
+-x	#extract an archive
+-c	#create an archive
+-f	#specify file name of the archive
+-v	#verbose, list all files being archived/extracted
+-z	#create/extract archive with gzip/gunzip
+-j	#create/extract archive with bzip2/bunzip2
+-J	#create/extract archive with XZ
+
+tar -cvf filename.tar files_dir/files_zip		#created an archive, with all files and specified filename after archiving
+tar -cvf filename.tar student/work student/school	#created a singe archive of multiple files from separate dirs
+tar -tvf filename.tar					#list the contet of a .tar file
+tar -xvf filename.tar					#extract the content of a .tar file without its removement
+
+#Compression - collection of files and directories in one file, uses less disk space for storage
+- bzip2
+- zip
+
+#----------------compression commands--------------
+bzip2 filename				#singe file/dir compression
+bzip2 file1 file2 file3 student/work	#multiple files/dirs compression
+
+zip -r file_name.zip files_dir/		#-r includes all files in files_dir/
+

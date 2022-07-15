@@ -1,0 +1,8 @@
+
+#tty (teletype) - displays terminal-related info, prints filename of terminal, connected to standard input
+
+#ttyrec - records terminal sessions
+
+#ttyrec - command to start recording
+#exit - recodirng will be stoped and the file will be created in your current working directory. The filename is ttyrecord
+#ttyplay ttyrecord

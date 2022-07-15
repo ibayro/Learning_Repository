@@ -1,0 +1,13 @@
+
+dd - data duplicator used for converting and copying files
+
+if/of - input/output file
+
+#copy
+sudo dd if=student/work/01.txt of=student/work/02.txt bs=512 count=1
+
+#backup
+sudo dd if=/dev/sdata2 of=student/hdbackup.img
+
+#erase data
+sudo dd if=student/work/01.txt
