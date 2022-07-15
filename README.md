@@ -1,4 +1,1 @@
-# GITHub Actions
-
-Status of Last Deployment:<br>
-<img src="https://github.com/ibayro/rep/workflows/My_GitHub_Workflow_Action/badge.svg?branch=main"><br>
+This branch is created to store scripts made during the Bash Scripting Tutorials By Packt
