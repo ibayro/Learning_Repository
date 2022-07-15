@@ -1,0 +1,30 @@
+#!/bin/bash
+
+PI=3.14
+VAR_A=10
+VAR_B=$VAR_A
+VAR_C=${VAR_B}
+
+echo "Lets print all variables:"
+echo $VAR_A
+echo $VAR_B
+echo $VAR_C
+
+echo "We know this will break:"
+echo "0. The value of PI is $PIabc"
+
+echo "And this will work:"
+echo "1. The value of PI is $PI"
+echo "2. The value of PI is ${PI}"
+echo "3. The value of PI is" $PI
+
+echo "And we can make a new string"
+
+STR_A="Ihor"
+STR_B="Alina"
+STR_C=${STR_A}" + "${STR_B}
+
+echo "${STR_A} + ${STR_B} equals Ihor + Alina"
+echo "${STR_C} is the same as Ihor + Alina too"
+
+exit 0

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CTR=1
+while  [ ${CTR} -lt 9 ]
+#until [ ${CTR} -lt 9 ]	#basically the same as "while"
+do
+	echo "CTR var: ${CTR}"
+	((CTR++))
+done
+echo "Done"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#if
+a=100
+if [ $a -eq 100 ]; then echo "a is equial to $a"; fi
+
+#for loop
+for i in {1..10}; do echo "Hello World"; done
+
+#while loop
+x=10
+while [ $x -eq 10 ]; do echo $x; sleep 1; done
+

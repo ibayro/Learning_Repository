@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source create_delete_file_script
+FNAME="my_file.txt"
+create_file "${FNAME}"
+delete_file "${FNAME}"
+
+exit 0
+
+#this script imports functions from "create_delete_files_script" and exetutes them in this file

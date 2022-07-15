@@ -1,0 +1,16 @@
+#!/bin/bash
+
+USER_AGE=22
+AGE_LIMIT=18
+NAME="Ihor"
+HAS_NIGHTMARES="TRUE"
+
+if [ "${NAME}" == "Ihor" ]; then
+	if [ ${USER_AGE} -ge ${AGE_LIMIT} ]; then
+		if [ "${HAS_NIGHTMARES}" == "TRUE" ]; then
+			echo "${NAME} gets nightmares and should not see the movie"
+		fi
+	fi
+else
+	echo "Who is this"
+fi

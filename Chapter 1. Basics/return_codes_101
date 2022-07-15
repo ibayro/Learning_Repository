@@ -1,0 +1,40 @@
+#!/bin/bash
+
+GLOBAL_RET=255
+
+function my_function_global() {
+	ls /home/${USER}/.bashrc	#return code comand
+	GLOBAL_RET=$?
+}
+
+function my_function_return() {
+	ls /home/${USER}/.bashrc
+	return $?
+}
+
+function my_function_str() {
+	local UNAME=$1
+	local OUTPUT=""
+	if [ -e /home/${UNAME}/.bashrc ]; then
+		OUTPUT="FOUND"
+	else
+		OUTPUT="NOT FOUND"
+	fi
+	echo ${OUTPUT}
+}
+
+echo "Current return: ${GLOBAL_RET}"
+my_function_global "${USER}"
+echo "Current return after: ${GLOBAL_RET}"
+GLOBAL_RET=255
+echo "Current return: ${GLOBAL_RET}"
+my_function_return "${USER}"
+GLOBAL_RET=$?
+echo "Current return after: ${GLOBAL_RET}"
+
+GLOBAL_RET=""
+echo "Current return: ${GLOBAL_RET}"
+GLOBAL_RET=$(my_function_str ${USER})
+
+echo "Current return after: $GLOBAL_RET"
+exit 0

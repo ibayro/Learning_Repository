@@ -1,0 +1,14 @@
+#!/bin/bash
+
+MY_NAME="Ihor"
+NAME_2="Sabina"
+NAME_3="Alina"
+NAME_4="Alla"
+
+if [ "${MY_NAME}" == "Ihor" ]; then
+	echo "Ihor is home from vacation"
+elif [[ "${MY_NAME}" == "${NAME_2}" || "${MY_NAME}" == ${NAME_3}" || "${MY_NAME}" == ${NAME_4}" ]]; then
+	echo "Looks like one of the ladies are home"
+else
+	echo "Who are you then?"
+fi

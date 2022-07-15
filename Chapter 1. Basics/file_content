@@ -1,0 +1,8 @@
+#!/bin/bash
+
+wc -c testdata/duplicates.txt | awk '{ print $1 }'	#awk removes the second field
+wc -c testdata/duplicates.txt | cut -d ' ' -f1		#also removes the second field
+
+sort    testdata/duplicates.txt			#sort all
+sort -u testdata/duplicates.txt			#sorts only unique strings
+sort -u testdata/duplicates.txt | wc -l		#count the number of unique elements

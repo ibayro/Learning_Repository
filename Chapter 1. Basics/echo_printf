@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo -n "Can we use special arguments to format strings with \t \r \n \r \n ?"
+echo
+echo "No, not yet"
+echo
+echo -en "Can we now use special \t arguments? \r\n\r\n?"
+echo
+echo "YES!!, with arguments -en we enable interpretation of backslash escapes"
+
+export LC_NUMERIC="en_US.UTF-8"
+
+DECIMAL=10.0
+FLOAT=3.333
+FLOAT2=2.1234
+
+printf "%s %.2f\n\n" "This is two decimal places: " ${DECIMAL}
+
+printf "shall we align: \n\n %.3f %-.6f\n" ${FLOAT} ${FLOAT2}
+printf " %10f %-6f\n" ${FLOAT} ${FLOAT2}	#dedicating 10 spaces to the value
+printf " %-10f %-6f\n" ${FLOAT} ${FLOAT2}	#aligning value to the left
+
+printf '%.0s-' {1..20}; printf "\n"
