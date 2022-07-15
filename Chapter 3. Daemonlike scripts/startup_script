@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#------------How to create and run a service (script) on a system startup---------- 
+#	sudo cp startup_script /usr/bin
+#	sudo chmod a+x startup_script
+#	nano /etc/systemd/system/startup_script.service
+#	sudo systemctl enable startup_script
+#	sudo systemctl start startup_script
+#	sudo systemctl status startup_script
+
+for (( ; ; ))
+do
+	sleep 1
+done

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#	$$	Returns PID of the current script
+#	$?	Returns PID of the last job that was send to the background
+#	$@	Returns the array of input variables (ex. $!, $2)
+
+SUBPID=0
+
+function func_timer() {
+	trap "clean_up" SIGALRM
+	sleep $1& wait
+	kill -s SIGALRM $$
+}
+
+function clean_up() {
+	trap - ALRM
+	kill -s SIGALRM $SUBPID
+	kill $! 2>/dev/null
+}
+
+func_timer $1& SUBPID=$!
+
+shift
+
+trap "clean_up" ALRM INT
+
+"$@" & wait $!
+
+kill -ALRM $SUBPID
+wait $SUBPID
+exit 0

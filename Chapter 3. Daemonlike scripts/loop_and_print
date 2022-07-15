@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Writing script, that will be running after logoff 
+
+EXIT_PLEASE=0
+INC=0
+
+until [ ${EXIT_PLEASE} != 0 ]
+do
+	echo "Boo $INC" > /dev/null
+	INC=$((INC + 1))
+	sleep 1
+done
+exit 0
+
+#activation command	./loop_and_print &
+
+#deactivation commands:	disown - removes the background process from the list of jobs
+#			nohup - disconnects the script from the current shell, allows to retain output of the script and it is accessible for other applications in a seperate "nohup.out" file

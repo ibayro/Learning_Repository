@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#	Workers operate in parallel - read an input and execute a command 
+#	FIFOs 
+#		reduce file system activities or input/output
+#		data can flow directly to listeners or recipients
+#		bidirectional - can be read and written to at the same time
+
+#----------------FIFO creation flow----------------
+#	Create file using mkinfo command
+#	File contains special property - differs from pipe and normal files
+#	Allow for multiple readers and writers
+#	Provide permissions using -m flag or mknod command
+
+FIFO_FILE=/tmp/WORK_QUEUE_FIFO
+
+BUFFER=""
+echo "Worker started: $1"
+
+while :
+do
+
+read BUFFER < "${FIFO_FILE}"
+
+if [ "${BUFFER}" != "" ]; then
+	echo "Worker recieved: $BUFFER"
+	exit 1
+fi
+
+done
+
+exit 0
