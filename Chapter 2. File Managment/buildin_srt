@@ -1,0 +1,62 @@
+#!/bin/bash
+
+GB_CSV="testdata/names.csv"
+
+#retrieve the number of elements in an array
+set IFS=,
+set oldIFS = $IFS
+readarray -t ARR < ${GB_CSV}
+
+#output number of lines
+ARRY_ELEM=${#ARR[@]}
+echo "We have ${ARRY_ELEM} rows in ${GB_CSV}"
+
+#removing spaces with strip (counting the number of spaces and removing them with additional while loop, performing this action until we done). Corrected values are than reinserted in an array.
+INC=0
+for i in "${ARR[@]}"
+do
+
+		:
+	res="${i//[^ ]}"
+	TMP_CNT="${#res}"
+	while [ ${TMP_CNT} -gt 0 ]; do
+		i=${i/, /,}
+		TMP_CNT=$[$TMP_CNT-1]
+	done
+	ARR[$INC]=$i
+	INC=$[INC+1]
+done
+
+#removing the last character of each line. Results are reinserted into an array
+INC=0
+for i in "${ARR[@]}"
+do
+
+		:
+	ARR[$INC]=${i::-1}
+	INC=$[$INC+1]
+done
+
+#Turn all the characters to upper case
+INC=0
+for i in "${ARR[@]}"
+do
+
+		:
+	ARR[$INC]=${i^^}
+	printf "%s" "${ARR[$INC]}"
+	INC=$[$INC+1]
+	echo
+done
+
+echo
+echo "Replacing Ihor to Harry"
+INC=0
+for i in "${ARR[@]}"
+do
+		:
+	ARR[$INC]=${i/IHOR/Harry}
+	printf "%s" "${ARR[$INC]}"
+	INC=$[$INC+1]
+	echo
+done

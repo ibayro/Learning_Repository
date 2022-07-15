@@ -1,0 +1,22 @@
+#!/bin/bash
+
+CM_TXT="testdata/comment.txt"
+
+set IFS=,
+set oldIFS = $IFS
+readarray -t ARR < ${CM_TXT}
+
+ARRY_ELEM=${#ARR[@]}
+
+echo;echo "We have ${ARRY_ELEM} rows in ${CM_TXT}"
+
+INC=0
+for i in "${ARR[@]}"
+do
+		:
+	ARR[$INC]="#${i}"
+	printf "%s" "${ARR[$INC]}"
+	INC=$[$INC+1]
+	echo
+done
+

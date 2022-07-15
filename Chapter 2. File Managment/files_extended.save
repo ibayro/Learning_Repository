@@ -1,0 +1,13 @@
+#!/bin/bash
+
+FILE_TO_TEST=""
+
+function permissions() {
+	echo -e "\nWhan are permissions on this $2?\n"
+	if [ -r $1 ]; then
+		echo -e "[r] Read"
+	fi
+if [ -r $1 ]; then
+                echo -e "[r] Read"
+        fi
+

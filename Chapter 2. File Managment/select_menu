@@ -1,0 +1,67 @@
+#!/bin/bash
+
+TITLE="Select file menu"
+PROMPT="Pick a task:"
+OPTIONS=("list" "create" "delete")
+
+function list_files() {
+	PS3="Choose a file from the list or type \"back\" to go back to the main menu: "
+	select OPT in *; do
+		if [[ $REPLY -le ${#OPT[@]} ]]; then
+			if [[ "$REPLY" == "back" ]]; then
+				return
+			fi
+			echo "$OPT was selected"
+		else
+			list_files
+		fi
+	done
+}
+
+function create_file() {
+	read -p 'enter the filename to create: ' filename
+	touch "${filename}"
+	ls
+}
+
+function delete_file() {
+	read -p 'Enter the filename to delete: ' filename
+	if [ -f $filename ]; then
+	rm -i "$filename"
+	if [ -f $filename ]; then
+		echo "$filename is not removed"
+	else
+		echo "$filename is removed"
+	fi
+else
+	echo "File does not exist"
+fi
+}
+
+function main_menu() {
+	echo "${TITLE}"
+	PS3="${PROMPT} "
+	select OPT in "${OPTIONS[@]}" "quit"; do
+		case "$REPLY" in
+			1 )
+
+			list_files
+			main_menu
+			;;
+			2 )
+
+			create_file
+			main_menu
+			;;
+			3 )
+			
+			delete_file
+			main_menu
+			;;
+			$(( ${#OPTIONS[@]}+1 )) ) echo "Exiting"; break;;
+			*) echo "Invalid options. Try another one"; continue;;
+		esac
+	done
+}
+
+main_menu
