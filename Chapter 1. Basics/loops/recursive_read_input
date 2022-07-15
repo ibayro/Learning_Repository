@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function recursive_func() {
+
+	echo -n "Press any key to lontinue loop"
+	read input
+	recursive_func
+}
+
+recursive_func
+exit 0
+
