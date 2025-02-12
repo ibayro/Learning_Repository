@@ -1,5 +1,11 @@
 #!/bin/bash
 
+count=1
+until [ $count -gt 5 ]; do
+    echo "Count: $count"
+    ((count++))
+done
+
 EXIT_PLEASE=0
 until [ $EXIT_PLEASE != 0 ]
 do
