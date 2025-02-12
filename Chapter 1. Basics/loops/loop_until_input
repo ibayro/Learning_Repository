@@ -3,13 +3,14 @@
 count=1
 until [ $count -gt 5 ]; do
     echo "Count: $count"
+    sleep 1
     ((count++))
 done
 
 EXIT_PLEASE=0
 until [ $EXIT_PLEASE != 0 ]
 do
-	echo "Press CTRL+C to stop this loop"
+	echo "Press CTRL+Z to stop this loop"
 	sleep 1
 done
 exit 0
