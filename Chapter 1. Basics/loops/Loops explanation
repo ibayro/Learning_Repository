@@ -1,0 +1,16 @@
+for:
+- Iterates over a fixed set of values;
+- Runs a predefined number of times.
+
+while:
+- Runs while the condition is true;
+- Useful when the number of iterations is unknown
+
+until:
+- Runs until the condition is true;
+- Similar to while, but stops when the condition becomes true
+
+Key Differences:
+- for is best when looping over a known range or list (for i in {1..10} or for file in *.txt).
+- while continues as long as the condition is true (while [ $x -lt 10 ]).
+- until continues until the condition becomes true (until [ $x -ge 10 ]).
