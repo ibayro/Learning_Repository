@@ -3,6 +3,11 @@
 FIFO_FILE=/tmp/WORK_QUEUE_FIFO
 mkfifo "${FIFO_FILE}"
 
+/* Creating a FIFO (Named Pipe)
+FIFO_FILE is assigned the path /tmp/WORK_QUEUE_FIFO.
+mkfifo creates a named pipe at this location. A FIFO (First In, First Out) pipe allows inter-process communication (IPC).
+*/
+
 NUM_WORKERS=5
 I=0
 while [ $I -lt $NUM_WORKERS ]; do
@@ -12,6 +17,19 @@ while [ $I -lt $NUM_WORKERS ]; do
 
 done
 
+/* 2. Spawning Worker Processes
+🛠 What is worker?
+
+This script assumes there is a separate script named worker that takes an argument (I) and performs some task.
+
+NUM_WORKERS=5 sets the number of worker processes to 5.
+A while loop runs 5 times (I=0 to I=4).
+Inside the loop:
+A new worker process is launched by running bash worker "$I" & in the background (& makes it non-blocking).
+"$I" is passed as an argument to the worker script.
+I=$((I+1)) increments the counter.
+*/
+
 I=0
 while [ $I -lt $NUM_WORKERS ]; do
 
@@ -20,6 +38,34 @@ while [ $I -lt $NUM_WORKERS ]; do
 
 done
 
+/* 3. Feeding Tasks into the FIFO Queue
+Another while loop runs 5 times (I=0 to I=4).
+Each iteration writes a task ID (I) into the FIFO.
+The worker processes will be reading these tasks from the FIFO
+/*
+
 sleep 5
 rm -rf "${FIFO_FILE}"
 exit 0
+
+/* 4. Wait and Cleanup
+sleep 5: Gives workers some time to process tasks.
+rm -rf "${FIFO_FILE}": Deletes the FIFO file after execution.
+exit 0: Exits successfully.
+/*
+
+/* Summary of Execution Flow
+Creates a named pipe (/tmp/WORK_QUEUE_FIFO).
+Spawns 5 worker processes in the background.
+Writes 5 task IDs (0 to 4) into the FIFO.
+Each worker reads from the FIFO and processes tasks.
+Waits for 5 seconds and cleans up.
+/*
+
+/* Key Concepts Demonstrated
+✅ Inter-Process Communication (IPC) using named pipes
+✅ Parallel Processing with multiple worker processes
+✅ Queue-Based Work Distribution
+✅ Background Process Management (& operator)
+/*
+
