@@ -1,0 +1,16 @@
+#!/bin/bash
+
+"Recursive Function in Bash
+A recursive function is a function that calls itself until a base condition is met. 
+This is useful for solving problems that can be broken down into smaller subproblems, such as factorial calculations, Fibonacci sequences, and directory traversal."
+
+function recursive_func() {
+
+	echo -n "Press Enter to continue loop"
+	read input
+	recursive_func
+}
+
+recursive_func
+exit 0
+
